@@ -55,7 +55,7 @@ flowchart TD
     H --> I{Trong 24h co Khieu nai?}
     I -- KHONG co khieu nai --> J[Tu dong tru 10% phi san -> Giai ngan 90% vao Vi Tai xe -> COMPLETED]
     I -- CO khieu nai --> K[Dong bang Escrow (FROZEN_DISPUTE) -> Admin doi soat anh phan xu]
-
+```
 
  4. Detailed Core Use Cases & Business Rules
 
