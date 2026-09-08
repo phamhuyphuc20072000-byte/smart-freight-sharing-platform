@@ -39,7 +39,7 @@ flowchart TD
 
     SYS <-->|"Thanh toan coc & Webhook xac nhan"| PAY
     SYS <-->|"Vet dinh tuyen Polyline, Canh bao cam tai"| MAP
-
+```
 
  3. End-to-End Business Workflow
 
