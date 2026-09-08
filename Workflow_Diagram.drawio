@@ -1,0 +1,100 @@
+<mxfile host="Electron" agent="Mozilla/5.0">
+  <diagram id="WorkflowDiagram" name="2. End-to-End Workflow">
+    <mxGraphModel dx="1086" dy="784" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1400" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p1" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;startSize=30;rounded=1;strokeWidth=2;" value="&lt;b&gt;GIAI ĐOẠN 1: KHỞI TẠO CUNG &amp; CẦU (SUPPLY &amp; DEMAND INITIALIZATION)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="150" width="1000" x="80" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_a1" parent="p1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;strokeWidth=1.5;" value="&lt;b&gt;👨‍✈️ Tài xế kích hoạt chuyến về&lt;/b&gt;&lt;br/&gt;• Khai báo điểm đi, điểm đến, ETD&lt;br/&gt;• Khai báo tải trọng trống (kg, CBM)&lt;br/&gt;• Chọn tuyến (Cao tốc / Quốc lộ)" vertex="1">
+          <mxGeometry height="80" width="260" x="50" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_a2" parent="p1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;strokeWidth=1.5;" value="&lt;b&gt;&amp;nbsp;Chủ hàng tạo đơn gửi hàng&lt;/b&gt;&lt;br&gt;• Điểm lấy, điểm giao, giờ cần gửi&lt;br&gt;• Nhập khối lượng (kg) &amp;amp; Kích thước (DxRxC)&lt;br&gt;• Chọn điều kiện đường vào (FN-02.1B)" vertex="1">
+          <mxGeometry height="80" width="270" x="680" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;startSize=30;rounded=1;strokeWidth=2;" value="&lt;b&gt;GIAI ĐOẠN 2: MATCHING &amp; ĐẶT CỌC ESCROW (MATCHING &amp; PRE-AUTHORIZATION)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="230" width="1000" x="80" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_scan" parent="p2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;strokeWidth=1.5;" value="&lt;b&gt;💻 THUẬT TOÁN QUÉT MATCHING&lt;/b&gt;&lt;br/&gt;1. Tải trọng: W_đơn &amp;le; W_trống&lt;br/&gt;2. Thể tích: V_đơn &amp;le; V_trống&lt;br/&gt;3. Hành lang tuyến: Lệch &amp;le; 10km&lt;br/&gt;4. Loại đường: Khớp kích thước xe" vertex="1">
+          <mxGeometry height="85" width="280" x="360" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_dec" parent="p2" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=11;" value="Có xe phù hợp?" vertex="1">
+          <mxGeometry height="60" width="130" x="435" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_list" parent="p2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" value="&lt;b&gt;Gợi ý danh sách xe tải chuyến về&lt;/b&gt;&lt;br/&gt;Chủ hàng chọn xe &amp;amp; Gửi yêu cầu" vertex="1">
+          <mxGeometry height="50" width="220" x="100" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_wait" parent="p2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" value="&lt;b&gt;Đăng đơn lên sàn chờ (Pending)&lt;/b&gt;&lt;br/&gt;Chờ tài xế tiện đường nhận" vertex="1">
+          <mxGeometry height="50" width="220" x="680" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;startSize=30;rounded=1;strokeWidth=2;" value="&lt;b&gt;GIAI ĐOẠN 3: KHÓA TIỀN ESCROW &amp; LẤY HÀNG (ESCROW LOCK &amp; IN-TRANSIT)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="170" width="1000" x="80" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_escrow" parent="p3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;strokeWidth=1.5;" value="&lt;b&gt;💳 Khóa tiền Escrow Vault&lt;/b&gt;&lt;br/&gt;Chủ hàng thanh toán cước 100% qua QR/Ngân hàng&lt;br/&gt;&lt;i&gt;Status: MATCHED&lt;/i&gt;" vertex="1">
+          <mxGeometry height="70" width="260" x="100" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_pickup" parent="p3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;strokeWidth=1.5;" value="&lt;b&gt;📦 Bốc hàng &amp; Chụp ảnh đối chứng đầu vào&lt;/b&gt;&lt;br/&gt;Tài xế đến kho lấy hàng, chụp ảnh tem mác&lt;br/&gt;&lt;i&gt;Status: IN_TRANSIT (Live GPS Tracking)&lt;/i&gt;" vertex="1">
+          <mxGeometry height="70" width="310" x="580" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;startSize=30;rounded=1;strokeWidth=2;" value="&lt;b&gt;GIAI ĐOẠN 4: GIAO NHẬN ĐIỆN TỬ e-PoD (ELECTRONIC PROOF OF DELIVERY)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="180" width="1000" x="80" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_epod" parent="p4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;strokeWidth=2;" value="&lt;b&gt;📱 THỰC HIỆN e-PoD TẠI ĐIỂM GIAO&lt;/b&gt;&lt;br/&gt;1. Check GPS Geofence &amp;le; 200m (Anti-Mock GPS)&lt;br/&gt;2. Chụp &amp;ge; 2 ảnh hiện trạng hàng hóa trực tiếp&lt;br/&gt;3. Người nhận ký tên cảm ứng (hoặc mã SMS OTP)&lt;br/&gt;&lt;i&gt;Status đổi sang: DELIVERED&lt;/i&gt;" vertex="1">
+          <mxGeometry height="90" width="380" x="310" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;startSize=30;rounded=1;strokeWidth=2;" value="&lt;b&gt;GIAI ĐOẠN 5: ĐẾM NGƯỢC 24H &amp; GIẢI NGÂN (24-HOUR SETTLEMENT &amp; DISPUTE)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="260" width="1000" x="80" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_timer" parent="p5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="&lt;b&gt;⏱️ Kích hoạt bộ đếm ngược 24h&lt;/b&gt;&lt;br/&gt;Hiện đồng hồ 23:59:59 trên cả 2 App" vertex="1">
+          <mxGeometry height="50" width="240" x="380" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_check" parent="p5" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=11;" value="Trong 24h có Khiếu nại?" vertex="1">
+          <mxGeometry height="60" width="170" x="415" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_happy" parent="p5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;strokeWidth=1.5;" value="&lt;b&gt;✅ TỰ ĐỘNG GIẢI NGÂN (HAPPY PATH)&lt;/b&gt;&lt;br/&gt;• Trừ 10% phí hoa hồng sàn&lt;br/&gt;• Cộng 90% tiền cước vào Ví Tài xế&lt;br/&gt;&lt;i&gt;Status: COMPLETED&lt;/i&gt;" vertex="1">
+          <mxGeometry height="70" width="250" x="100" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_dispute" parent="p5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;strokeWidth=1.5;" value="&lt;b&gt;⚠️ KHIẾU NẠI &amp; TRANH CHẤP (DISPUTE)&lt;/b&gt;&lt;br/&gt;• Đóng băng tiền Escrow (FROZEN_DISPUTE)&lt;br/&gt;• Admin đối soát ảnh Pick-up vs e-PoD&lt;br/&gt;• Phán quyết Hoàn tiền / Giải ngân / Chia đôi" vertex="1">
+          <mxGeometry height="80" width="280" x="650" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="p1_a1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" target="p2_scan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="p1_a2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" target="p2_scan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="p2_scan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" target="p2_dec">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="p2_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" target="p2_list" value="Có">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="p2_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#b85450;" target="p2_wait" value="Không">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="p2_list" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" target="p3_escrow">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="p3_escrow" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" target="p3_pickup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="p3_pickup" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" target="p4_epod">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="p4_epod" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" target="p5_timer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="p5_timer" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;" target="p5_check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="p5_check" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" target="p5_happy" value="Không (Hết 24h)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="p5_check" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#b85450;" target="p5_dispute" value="CÓ Khiếu nại">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
