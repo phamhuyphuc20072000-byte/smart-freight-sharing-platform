@@ -20,29 +20,29 @@ Interactive Prototype Demo: [Live Web Prototype](prototype_freight_sharing.html)
 ```mermaid
 flowchart TD
     SYS["SAN DIEU PHOI XE TAI GHEP HANG<br/>(Smart Freight Sharing Platform)"]
-    DRV["Driver (Tai xe)"]
-    SHP["Shipper (Chu hang)"]
-    CSG["Consignee (Nguoi nhan)"]
-    ADM["Admin (Quan tri vien)"]
-    PAY["Payment Gateway (VietQR / VNPAY)"]
-    MAP["Map & Telematics API (Vietmap / Google)"]
+    DRV["Driver<br/>(Tai xe)"]
+    SHP["Shipper<br/>(Chu hang)"]
+    CSG["Consignee<br/>(Nguoi nhan)"]
+    ADM["Admin<br/>(Quan tri vien)"]
+    PAY["Payment Gateway<br/>(VietQR / VNPAY)"]
+    MAP["Map & Telematics API<br/>(Vietmap / Google)"]
 
-    DRV -->|"Dang chuyen ve, Nhan don, e-PoD, Rut vi"| SYS
-    SYS -->|"Voice Alert, Don ghep tien duong, Payout 90%"| DRV
+    DRV -->|"Dang chuyen ve, Nhan don,<br/>Gui e-PoD, Rut tien vi"| SYS
+    SYS -->|"Voice Alert, Don ghep phu hop,<br/>Giai ngan 90% tien cuoc"| DRV
 
-    SHP -->|"Tao don, Nap coc Escrow, Khieu nai"| SYS
-    SYS -->|"Xe goi y, GPS Live Tracking, Bien ban e-PoD"| SHP
+    SHP -->|"Tao don hang, Nap coc Escrow,<br/>Gui khieu nai (Dispute)"| SYS
+    SYS -->|"Goi y danh sach xe tai,<br/>Live GPS, Bien ban e-PoD"| SHP
 
-    CSG -->|"Ky cam ung e-PoD, Doc SMS OTP"| SYS
-    SYS -->|"SMS OTP xac thuc, Thong bao giao hang"| CSG
+    CSG -->|"Ky cam ung e-PoD,<br/>Cung cap ma SMS OTP"| SYS
+    SYS -->|"Gui ma SMS OTP xac thuc,<br/>Thong bao trang thai giao"| CSG
 
-    ADM -->|"Duyet KYC, Phan quyet Dispute"| SYS
-    SYS -->|"Bao cao doi soat, Ticket khieu nai"| ADM
+    ADM -->|"Kiem duyet KYC tai xe,<br/>Phan quyet tranh chap"| SYS
+    SYS -->|"Bao cao doi soat doanh thu,<br/>Danh sach ticket khieu nai"| ADM
 
-    SYS -->|"Thanh toan coc"| PAY
-    PAY -->|"Webhook xac nhan"| SYS
+    SYS -->|"Yeu cau thanh toan coc"| PAY
+    PAY -->|"Webhook xac nhan thanh toan"| SYS
 
-    SYS -->|"Yeu cau dinh tuyen"| MAP
+    SYS -->|"Yeu cau dinh tuyen ban do"| MAP
     MAP -->|"Vet Polyline, Canh bao cam tai"| SYS
 ```
 
@@ -52,16 +52,16 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A["1. Tai xe kich hoat Chuyen ve & Chu hang tao don"] --> B["2. Thuat toan quet: Check W, V, Lech tuyen, Loai duong"]
-    B --> C{"Co xe phu hop?"}
-    C -- Co --> D["3. Chu hang chon xe & Khoa 100% coc vao Quy Escrow Vault"]
-    C -- Khong --> E["Dang don len san cho PENDING"]
-    D --> F["4. Tai xe lay hang, chup anh doi chung - Status: IN_TRANSIT"]
-    F --> G["5. Den noi - Check GPS - Chup 2 anh - Ky e-PoD - Status: DELIVERED"]
-    G --> H["6. Kich hoat bo dem nguoc 24h Escrow tu dong"]
-    H --> I{"Trong 24h co Khieu nai?"}
-    I -- KHONG co khieu nai --> J["Tu dong tru 10% phi san - Giai ngan 90% vao Vi Tai xe - Status: COMPLETED"]
-    I -- CO khieu nai --> K["Dong bang Escrow (FROZEN_DISPUTE) - Admin doi soat anh phan xu"]
+    A["1. Tai xe dang chuyen ve<br/>& Chu hang tao don hang"] --> B["2. Thuat toan quet Matching:<br/>Check W, V, Lech tuyen, Loai duong"]
+    B --> C{"Co xe<br/>phu hop?"}
+    C -- Co --> D["3. Chu hang chon xe phu hop<br/>& Khoa 100% coc vao Quy Escrow"]
+    C -- Khong --> E["Dang don len san cho PENDING<br/>de cho tai xe khac nhan"]
+    D --> F["4. Tai xe den lay hang,<br/>chup anh doi chung (IN_TRANSIT)"]
+    F --> G["5. Den noi: Check GPS <=200m,<br/>Chup 2 anh & Ky e-PoD (DELIVERED)"]
+    G --> H["6. Kich hoat bo dem nguoc<br/>24 gio Escrow tu dong"]
+    H --> I{"Trong 24h<br/>co Khieu nai?"}
+    I -- KHONG co khieu nai --> J["Tu dong tru 10% phi san,<br/>Giai ngan 90% cho Tai xe (COMPLETED)"]
+    I -- CO khieu nai --> K["Dong bang tien Escrow (FROZEN)<br/>& Admin vao doi soat phan xu"]
 ```
 
 ---
